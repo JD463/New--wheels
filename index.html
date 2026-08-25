@@ -1,0 +1,266 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1,viewport-fit=cover">
+<meta name="theme-color" content="#111827">
+<title>Kim Needs New Wheels</title>
+<style>
+  :root{
+    --bg:#f3f4f6; --card:#fff; --text:#111827; --muted:#6b7280;
+    --line:#e5e7eb; --accent:#2563eb; --good:#0f766e; --warn:#b45309;
+  }
+  *{box-sizing:border-box}
+  body{
+    margin:0; font-family:system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;
+    background:var(--bg); color:var(--text);
+  }
+  .wrap{max-width:620px;margin:auto;padding:18px 14px 36px}
+  .hero{
+    background:#111827;color:white;border-radius:18px;padding:18px;margin-bottom:14px;
+    box-shadow:0 8px 24px rgba(0,0,0,.12);
+  }
+  .hero-top{display:flex;align-items:center;gap:14px}
+  .wreck{
+    font-size:48px;line-height:1;transform:rotate(-4deg);
+    filter:grayscale(.15);
+  }
+  h1{font-size:26px;margin:0 0 4px}
+  .tag{font-size:14px;color:#d1d5db}
+  .joke{
+    margin-top:13px;padding-top:12px;border-top:1px solid #374151;
+    color:#fbbf24;font-size:13px;font-weight:650;
+  }
+  .card{
+    background:var(--card); border:1px solid var(--line); border-radius:16px;
+    padding:16px; margin-bottom:14px; box-shadow:0 4px 16px rgba(0,0,0,.04);
+  }
+  .grid{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+  .full{grid-column:1/-1}
+  label{display:block;font-size:13px;font-weight:650;margin-bottom:6px}
+  .input{
+    display:flex;align-items:center;border:1px solid #d1d5db;border-radius:10px;
+    background:white;overflow:hidden;
+  }
+  .prefix,.suffix{padding:0 10px;color:var(--muted);font-size:14px}
+  input,select{
+    width:100%;border:0;outline:0;padding:12px 10px;font-size:16px;background:white;
+    color:var(--text);min-width:0;
+  }
+  .seg{
+    display:grid;grid-template-columns:1fr 1fr;border:1px solid #d1d5db;
+    border-radius:10px;overflow:hidden;
+  }
+  .seg button{
+    border:0;background:white;color:#374151;padding:11px 8px;font-size:14px;font-weight:700;
+  }
+  .seg button.active{background:#111827;color:white}
+  .result-main{text-align:center;padding:8px 0 14px}
+  .payment{font-size:38px;font-weight:800;letter-spacing:-1px}
+  .caption{color:var(--muted);font-size:13px}
+  .quip{margin-top:6px;color:var(--warn);font-size:12px;font-weight:650}
+  .rows{border-top:1px solid var(--line)}
+  .row{
+    display:flex;justify-content:space-between;gap:18px;padding:11px 0;
+    border-bottom:1px solid var(--line);font-size:15px
+  }
+  .row span:first-child{color:var(--muted)}
+  .row strong{text-align:right}
+  .total{font-size:17px}
+  .total strong{color:var(--good)}
+  .note{font-size:12px;color:var(--muted);line-height:1.45}
+  .reset{
+    width:100%;border:0;border-radius:11px;padding:13px;font-size:15px;font-weight:700;
+    background:#111827;color:white;cursor:pointer;
+  }
+  @media(max-width:480px){
+    .grid{grid-template-columns:1fr}.full{grid-column:auto}
+    .wreck{font-size:42px}
+  }
+</style>
+</head>
+<body>
+<div class="wrap">
+
+  <div class="hero">
+    <div class="hero-top">
+      <div class="wreck">🚗💨</div>
+      <div>
+        <h1>Kim Needs New Wheels</h1>
+        <div class="tag">Because “it still starts most mornings” is not a maintenance plan.</div>
+      </div>
+    </div>
+    <div class="joke">Current vehicle status: emotionally attached, mechanically questionable.</div>
+  </div>
+
+  <div class="card">
+    <div class="grid">
+      <div>
+        <label for="price">Sticker Price</label>
+        <div class="input"><span class="prefix">$</span><input id="price" type="number" inputmode="decimal" value="45000" min="0" step="100"></div>
+      </div>
+      <div>
+        <label for="tax">Sales Tax</label>
+        <div class="input"><input id="tax" type="number" inputmode="decimal" value="13" min="0" step=".1"><span class="suffix">%</span></div>
+      </div>
+
+      <div>
+        <label for="down">Down Payment</label>
+        <div class="input"><span class="prefix">$</span><input id="down" type="number" inputmode="decimal" value="0" min="0" step="100"></div>
+      </div>
+      <div>
+        <label for="trade">Trade-In Credit</label>
+        <div class="input"><span class="prefix">$</span><input id="trade" type="number" inputmode="decimal" value="0" min="0" step="100"></div>
+      </div>
+
+      <div>
+        <label for="fees">Fees / Add-ons</label>
+        <div class="input"><span class="prefix">$</span><input id="fees" type="number" inputmode="decimal" value="0" min="0" step="100"></div>
+      </div>
+      <div>
+        <label for="rebate">Rebates / Discounts</label>
+        <div class="input"><span class="prefix">$</span><input id="rebate" type="number" inputmode="decimal" value="0" min="0" step="100"></div>
+      </div>
+
+      <div>
+        <label for="term">Loan Term</label>
+        <div class="input">
+          <select id="term">
+            <option value="24">24 months</option>
+            <option value="36">36 months</option>
+            <option value="48">48 months</option>
+            <option value="60">60 months</option>
+            <option value="72" selected>72 months</option>
+            <option value="84">84 months</option>
+            <option value="96">96 months</option>
+          </select>
+        </div>
+      </div>
+      <div>
+        <label for="rate">Interest Rate (APR)</label>
+        <div class="input"><input id="rate" type="number" inputmode="decimal" value="6.99" min="0" step=".01"><span class="suffix">%</span></div>
+      </div>
+
+      <div class="full">
+        <label>Show Payment As</label>
+        <div class="seg">
+          <button id="monthlyBtn" class="active" type="button">Monthly</button>
+          <button id="biweeklyBtn" type="button">Bi-weekly</button>
+        </div>
+      </div>
+    </div>
+  </div>
+
+  <div class="card">
+    <div class="result-main">
+      <div class="payment" id="payment">$0</div>
+      <div class="caption" id="paymentCaption">estimated monthly payment</div>
+      <div class="quip" id="quip">Cheaper than another tow truck. Probably.</div>
+    </div>
+    <div class="rows">
+      <div class="row"><span>Price after rebate</span><strong id="netPrice">$0</strong></div>
+      <div class="row"><span>Sales tax</span><strong id="taxAmt">$0</strong></div>
+      <div class="row"><span>Amount financed</span><strong id="financed">$0</strong></div>
+      <div class="row"><span>Total loan payments</span><strong id="loanPayments">$0</strong></div>
+      <div class="row"><span>Total interest</span><strong id="interest">$0</strong></div>
+      <div class="row total"><span>Total cost of vehicle</span><strong id="totalCost">$0</strong></div>
+    </div>
+  </div>
+
+  <div class="card">
+    <button class="reset" id="reset">Reset Before Kim Gets Ideas</button>
+  </div>
+
+  <div class="note">
+    Estimate only. Tax treatment of trade-ins, fees and rebates can vary by province and dealer.
+    Bi-weekly shown here is the equivalent payment frequency (26 payments per year), based on the same loan amortization.
+  </div>
+</div>
+
+<script>
+const ids = ["price","tax","down","trade","fees","rebate","term","rate"];
+const $ = id => document.getElementById(id);
+const num = id => Math.max(0, parseFloat($(id).value) || 0);
+const money = n => new Intl.NumberFormat("en-CA",{style:"currency",currency:"CAD",maximumFractionDigits:2}).format(n);
+
+let frequency = "monthly";
+
+function calc(){
+  const price=num("price"), taxRate=num("tax")/100, down=num("down"),
+        trade=num("trade"), fees=num("fees"), rebate=num("rebate"),
+        months=parseInt($("term").value,10), apr=num("rate")/100;
+
+  const netPrice=Math.max(0, price-rebate);
+  const tax=netPrice*taxRate;
+  const financed=Math.max(0, netPrice+tax+fees-down-trade);
+
+  const monthlyRate=apr/12;
+  let monthlyPayment=0;
+
+  if(financed>0){
+    monthlyPayment = monthlyRate === 0
+      ? financed/months
+      : financed * monthlyRate / (1-Math.pow(1+monthlyRate,-months));
+  }
+
+  const loanPayments=monthlyPayment*months;
+  const interest=Math.max(0,loanPayments-financed);
+  const totalCost=down+trade+loanPayments;
+
+  let shownPayment = monthlyPayment;
+  if(frequency === "biweekly"){
+    shownPayment = monthlyPayment * 12 / 26;
+    $("paymentCaption").textContent = "estimated bi-weekly payment";
+  } else {
+    $("paymentCaption").textContent = "estimated monthly payment";
+  }
+
+  $("payment").textContent=money(shownPayment);
+  $("netPrice").textContent=money(netPrice);
+  $("taxAmt").textContent=money(tax);
+  $("financed").textContent=money(financed);
+  $("loanPayments").textContent=money(loanPayments);
+  $("interest").textContent=money(interest);
+  $("totalCost").textContent=money(totalCost);
+
+  const q = $("quip");
+  if(totalCost < 30000) q.textContent="Kim may actually get away with this.";
+  else if(totalCost < 50000) q.textContent="New wheels. Moderate financial trauma.";
+  else if(totalCost < 75000) q.textContent="Nice car. Kim now works for the car.";
+  else q.textContent="At this price, it better apologize when it breaks.";
+}
+
+$("monthlyBtn").addEventListener("click",()=>{
+  frequency="monthly";
+  $("monthlyBtn").classList.add("active");
+  $("biweeklyBtn").classList.remove("active");
+  calc();
+});
+$("biweeklyBtn").addEventListener("click",()=>{
+  frequency="biweekly";
+  $("biweeklyBtn").classList.add("active");
+  $("monthlyBtn").classList.remove("active");
+  calc();
+});
+
+ids.forEach(id => $(id).addEventListener("input",calc));
+
+$("reset").addEventListener("click",()=>{
+  $("price").value=45000;
+  $("tax").value=13;
+  $("down").value=0;
+  $("trade").value=0;
+  $("fees").value=0;
+  $("rebate").value=0;
+  $("term").value=72;
+  $("rate").value=6.99;
+  frequency="monthly";
+  $("monthlyBtn").classList.add("active");
+  $("biweeklyBtn").classList.remove("active");
+  calc();
+});
+
+calc();
+</script>
+</body>
+</html>
